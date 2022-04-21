@@ -37,8 +37,6 @@ import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-// TODO: BAGUHIN MO TO. DAPAT DETAILS NI PASSENGER NAKALAGAY RITO
-
 public class PassengerAcceptedFragment extends Fragment {
     private int userId, rideTraceId, rideStatus;
     private boolean droppedOff = false;
@@ -134,8 +132,9 @@ public class PassengerAcceptedFragment extends Fragment {
         this.btPassengerDroppedoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseAccess dbAccess = new DatabaseAccess(currentContext);
-                dbAccess.executeNonQuery("INSERT INTO ride_trace SET " +
+                droppedOff = true;
+                DatabaseAccess dbAccess1 = new DatabaseAccess(currentContext);
+                dbAccess1.executeNonQuery("INSERT INTO ride_trace SET " +
                         "trace_id = '" + rideTraceInfo.get(1) +
                         "', passenger = " + rideTraceInfo.get(3) +
                         ", driver = " + rideTraceInfo.get(4) +
@@ -157,7 +156,6 @@ public class PassengerAcceptedFragment extends Fragment {
                             }
                         })
                         .show();
-                droppedOff = true;
                 currentActivity.droppedOff();
             }
         });
@@ -231,7 +229,7 @@ public class PassengerAcceptedFragment extends Fragment {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    handler.postDelayed(this, 5000);
+                    handler.postDelayed(this, 3000);
                     new CheckStatus().execute();
                 }
             }, 3000);
@@ -252,9 +250,8 @@ public class PassengerAcceptedFragment extends Fragment {
                 rideStatus = 2;
 
                 ResultSet resultSet = statement.executeQuery("SELECT status FROM ride_trace WHERE trace_id = '" + rideTraceInfo.get(1) + "' ORDER BY id DESC LIMIT 1");
-                while(resultSet.next()){
-                    rideStatus = resultSet.getInt("status");
-                }
+                resultSet.next();
+                rideStatus = resultSet.getInt("status");
             } catch (Exception e) {
                 e.printStackTrace();
             }

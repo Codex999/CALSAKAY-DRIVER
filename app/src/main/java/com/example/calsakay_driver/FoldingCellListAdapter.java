@@ -57,6 +57,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Passenger> {
 
             viewHolder.fcopivPassengerImage = cell.findViewById(R.id.fcopivPassengerImage);
             viewHolder.fcclivPassengerImage = cell.findViewById(R.id.fcclivPassengerImage);
+            viewHolder.fcopPassengerEmail = cell.findViewById(R.id.fcopPassengerEmail);
             viewHolder.fccltvPassengerName = cell.findViewById(R.id.fccltvPassengerName);
             viewHolder.fccltvPassengerDropoff = cell.findViewById(R.id.fccltvPassengerDropoff);
             viewHolder.fccltvPassengerPickup = cell.findViewById(R.id.fccltvPassengerPickup);
@@ -96,6 +97,7 @@ public class FoldingCellListAdapter extends ArrayAdapter<Passenger> {
         viewHolder.fcoptvPassengerJob.setText(passenger.getJob());
         viewHolder.fcoptvPassengerWaitingTime.setText(String.valueOf(passenger.getWaitingTime()));
         viewHolder.fcoptvPassengerAge.setText(String.valueOf(passenger.getAge()));
+        viewHolder.fcopPassengerEmail.setText(passenger.getEmail());
 
         viewHolder.fcclbtPassengerPickup.setOnClickListener(view -> {
             openPassengerAcceptedFragment(passenger);

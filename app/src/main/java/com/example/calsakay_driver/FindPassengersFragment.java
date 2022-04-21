@@ -55,7 +55,7 @@ public class FindPassengersFragment extends Fragment{
         this.lvPassengerContainerList = view.findViewById(R.id.lvFindPassengerContainer);
         passengerList = new ArrayList<>();
 
-        handler.postDelayed(refreshPassengerList, 0);
+
     }
 
     @Override
@@ -68,6 +68,14 @@ public class FindPassengersFragment extends Fragment{
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.currentContext = context;
+    }
+
+    public void findPassengers(){
+        handler.postDelayed(refreshPassengerList, 0);
+    }
+
+    public void stopFindingPassengers(){
+        handler.removeCallbacks(refreshPassengerList);
     }
 
     @Override
@@ -146,7 +154,7 @@ public class FindPassengersFragment extends Fragment{
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
 
-            fcAdapter = new FoldingCellListAdapter(getActivity(), passengerList);
+            fcAdapter = new FoldingCellListAdapter(currentContext, passengerList);
             lvPassengerContainerList.setAdapter(fcAdapter);
 
         }

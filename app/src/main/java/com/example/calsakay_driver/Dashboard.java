@@ -145,6 +145,7 @@ public class Dashboard extends AppCompatActivity implements DatabaseAccessCallba
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.flDashboard, this.fgFindPassengers)
                             .commit();
+                    this.fgFindPassengers.findPassengers();
                 }
                 break;
         }
@@ -169,6 +170,7 @@ public class Dashboard extends AppCompatActivity implements DatabaseAccessCallba
                 .replace(R.id.flDashboard, this.fgFindPassengers)
                 .commit();
         this.accepted = false;
+        this.fgFindPassengers.findPassengers();
     }
 
     public List<String[]> getUserData() {

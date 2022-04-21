@@ -106,7 +106,7 @@ public class SignUp5Fragment extends Fragment {
                 }else if(!et_password.getText().toString().matches(et_password_confirm.getText().toString())){
                     Toast.makeText(getActivity(), "Password field and confirmation password is not same.", Toast.LENGTH_SHORT).show();
                 }else{
-                    insertData();
+//                    insertData();
                     SignUpFinalStepFragment signUpFinalStepFragment = new SignUpFinalStepFragment();
                     signUpFinalStepFragment.setArguments(bundle);
                     getFragmentManager().beginTransaction().replace(R.id.signupLayout, signUpFinalStepFragment).commit();

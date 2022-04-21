@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -44,7 +45,7 @@ public class SplashScreen extends AppCompatActivity implements DatabaseAccessCal
             openActivity();
         } else {
             DatabaseAccess db = new DatabaseAccess(SplashScreen.this);
-            db.executeQuery("SELECT * FROM `calsakay_tbl_users` WHERE id = " + readFile());
+            db.executeQuery("SELECT id, first_name, last_name FROM `calsakay_tbl_users` WHERE id = " + readFile());
         }
     }
 
@@ -79,6 +80,12 @@ public class SplashScreen extends AppCompatActivity implements DatabaseAccessCal
     public void QueryResponse(List<String[]> data) {
         if(data.size() > 0){
             this.openMainActivity = new Intent(SplashScreen.this, Dashboard.class);
+            for(String[] r : data){
+                for(String q : r){
+                    Log.d("data", (q == null ? "null" : q));
+                }
+            }
+
             this.openMainActivity.putExtra("userData", (Serializable) data);
             openActivity();
         }

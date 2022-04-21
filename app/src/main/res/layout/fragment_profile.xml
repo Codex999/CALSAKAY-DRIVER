@@ -20,7 +20,8 @@
             android:id="@+id/iv_user_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -91,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Female" />
+                android:text="" />
 
         </LinearLayout>
 
@@ -103,13 +104,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="COntact number: " />
+                android:text="Contact number: " />
             <TextView
                 android:id="@+id/tv_contactnum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="09123456789" />
+                android:text="" />
 
         </LinearLayout>
 
@@ -127,82 +128,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Brgy 12 Lakas ng Mahihirap Caloocan CIty" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Medical job: " />
-            <TextView
-                android:id="@+id/tv_medicaljob"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Nurse" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Company name: " />
-            <TextView
-                android:id="@+id/tv_compname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="MCU Caloocan City" />
+                android:text="" />
 
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Company Address: " />
-            <TextView
-                android:id="@+id/tv_compaddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Caloocan City South" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Middle name: " />
-            <TextView
-                android:id="@+id/tv_compnum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="09123456789" />
-
-        </LinearLayout>
 
 
         <LinearLayout
@@ -214,11 +145,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Company ID Front: " />
+                android:text="Drivers License Front Image: " />
             <ImageView
                 android:id="@+id/iv_profile_id_front"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:layout_height="200dp"
+                android:src="@drawable/driverdlfront"/>
 
         </LinearLayout>
 
@@ -231,15 +163,85 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Company ID Back: " />
+                android:text="Drivers License Back Image: " />
             <ImageView
                 android:id="@+id/iv_profile_id_back"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:layout_height="200dp"
+                android:src="@drawable/driverdlback"/>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="ORCR" />
+            <ImageView
+                android:id="@+id/iv_orcr"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/driverorcr"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Drivers License Back Image: " />
+            <ImageView
+                android:id="@+id/iv_plate_no"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/driverplateno"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Drivers License Back Image: " />
+            <ImageView
+                android:id="@+id/iv_vehicle_front"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/drivervehiclefront"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Drivers License Back Image: " />
+            <ImageView
+                android:id="@+id/iv_vehicle_back"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/drivervehicleback"/>
+
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
 </ScrollView>

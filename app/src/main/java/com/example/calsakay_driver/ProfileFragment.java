@@ -46,10 +46,6 @@ public class ProfileFragment extends Fragment {
         tv_gender = view.findViewById(R.id.tv_gender);
         tv_mobile_number = view.findViewById(R.id.tv_contactnum);
         tv_address = view.findViewById(R.id.tv_address);
-        tv_medical_job = view.findViewById(R.id.tv_medicaljob);
-        tv_company_name = view.findViewById(R.id.tv_compname);
-        tv_company_address = view.findViewById(R.id.tv_compaddress);
-        tv_company_number = view.findViewById(R.id.tv_compnum);
         id_front_image = view.findViewById(R.id.iv_profile_id_front);
         id_back_image = view.findViewById(R.id.iv_profile_id_back);
         iv_profile_image = view.findViewById(R.id.iv_user_profile);
@@ -98,13 +94,9 @@ public class ProfileFragment extends Fragment {
                     gender = resultSet.getString("gender");
                     mobile_number = resultSet.getString("mobile_number");
                     address = resultSet.getNString("address");
-                    medical_job = resultSet.getString("medical_job");
-                    company_name = resultSet.getString("company_name");
-                    company_address = resultSet.getNString("company_address");
-                    company_number = resultSet.getString("company_number");
-                    front_image = resultSet.getString("front_image_name");
-                    back_image = resultSet.getString("back_image_name");
-                    user_image = resultSet.getString("user_image");
+//                    front_image = resultSet.getString("front_image_name");
+//                    back_image = resultSet.getString("back_image_name");
+//                    user_image = resultSet.getString("user_image");
                 }
 
 
@@ -123,20 +115,20 @@ public class ProfileFragment extends Fragment {
             tv_gender.setText(gender);
             tv_mobile_number.setText(mobile_number);
             tv_address.setText(address);
-            tv_company_name.setText(company_name);
-            tv_company_address.setText(company_address);
-            tv_company_number.setText(company_number);
+//            tv_company_name.setText(company_name);
+//            tv_company_address.setText(company_address);
+//            tv_company_number.setText(company_number);
 
-            byte[] front_bytes = Base64.decode(front_image, Base64.DEFAULT);
-            Bitmap front_bitmap = BitmapFactory.decodeByteArray(front_bytes, 0, front_bytes.length);
-            byte[] back_bytes = Base64.decode(back_image, Base64.DEFAULT);
-            Bitmap back_bitmap = BitmapFactory.decodeByteArray(back_bytes, 0, back_bytes.length);
-            byte[] user_profile = Base64.decode(user_image, Base64.DEFAULT);
-            Bitmap user_bitmap = BitmapFactory.decodeByteArray(user_profile, 0, user_profile.length);
-
-            id_front_image.setImageBitmap(front_bitmap);
-            id_back_image.setImageBitmap(back_bitmap);
-            iv_profile_image.setImageBitmap(user_bitmap);
+//            byte[] front_bytes = Base64.decode(front_image, Base64.DEFAULT);
+//            Bitmap front_bitmap = BitmapFactory.decodeByteArray(front_bytes, 0, front_bytes.length);
+//            byte[] back_bytes = Base64.decode(back_image, Base64.DEFAULT);
+//            Bitmap back_bitmap = BitmapFactory.decodeByteArray(back_bytes, 0, back_bytes.length);
+//            byte[] user_profile = Base64.decode(user_image, Base64.DEFAULT);
+//            Bitmap user_bitmap = BitmapFactory.decodeByteArray(user_profile, 0, user_profile.length);
+//
+//            id_front_image.setImageBitmap(front_bitmap);
+//            id_back_image.setImageBitmap(back_bitmap);
+//            iv_profile_image.setImageBitmap(user_bitmap);
 
 //            Log.d("front image", front_image);
 

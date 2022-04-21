@@ -54,6 +54,7 @@ public class Conversation extends AppCompatActivity implements DatabaseAccessCal
         DatabaseAccess dbAccessForRefreshing = new DatabaseAccess(this);
         DatabaseAccess dbAccessForSending = new DatabaseAccess(this);
 
+        new GetImage().execute();
 
         this.rvConvo = findViewById(R.id.rvConversation);
         this.sendButton = findViewById(R.id.btMessageSend);
@@ -91,32 +92,25 @@ public class Conversation extends AppCompatActivity implements DatabaseAccessCal
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                handler.postDelayed(this, 5000);
+                handler.postDelayed(this, 3000);
                 dbAccessForRefreshing.executeQuery("SELECT CONCAT(calsakay_tbl_users.first_name, ' ', " +
                         "calsakay_tbl_users.last_name) AS threadName, " +
                         "IF(messages.sender = " + userId + ", 'outgoing', 'ingoing') AS messageType, " +
                         "messages.sender, messages.reciever, messages.message_id, messages.message, " +
-                        "messages.read, messages.time, messages.read, calsakay_tbl_users.user_image FROM `messages` JOIN calsakay_tbl_users " +
+                        "messages.read, messages.time, messages.read FROM `messages` JOIN calsakay_tbl_users " +
                         "ON IF(messages.sender = " + userId + ", messages.reciever = calsakay_tbl_users.id, messages.sender = calsakay_tbl_users.id) " +
                         "WHERE (`reciever` = " + userId + " AND `sender` = " + chatMateId + ") OR (`reciever` = " + chatMateId + " AND `sender` = " + userId + ") ORDER BY messages.message_id");
             }
         }, 3000);
-
-
     }
 
     @Override
     public void QueryResponse(List<String[]> data) {
         if(data != null){
-            this.chatmateImage = data.get(0)[9];
-            InputStream stream = new ByteArrayInputStream(Base64.decode(chatmateImage.getBytes(), Base64.DEFAULT));
-            Bitmap chatImageBitmap = BitmapFactory.decodeStream(stream);
-            this.chatImage.setImageBitmap(chatImageBitmap);
             if(this.convo.size() == 0){
                 for (String[] row : data) {
                     this.convo.add(new ConversationModel(row[5],row[7], row[1]));
                 }
-
                 this.convoAdapter.setConvo(this.convo);
                 this.rvConvo.setAdapter(this.convoAdapter);
                 LinearLayoutManager ll = new LinearLayoutManager(this);
@@ -127,6 +121,36 @@ public class Conversation extends AppCompatActivity implements DatabaseAccessCal
                 this.convoAdapter.notifyItemInserted(this.convo.size() - 1);
                 this.rvConvo.scrollToPosition(this.convo.size() - 1);
             }
+        }
+    }
+
+        class GetImage extends AsyncTask<Void, Void, Void> {
+        String records1 = "", error = "", fetchedImage = "";
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://163.44.242.10:3306/feqxsxpi_calsakay?characterEncoding=latin1","feqxsxpi_root", "UCC2021bsitKrazy");
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT user_image FROM calsakay_tbl_users WHERE id =" + userId);
+
+                while(resultSet.next()){
+                    fetchedImage = resultSet.getString("user_image");
+                }
+
+            } catch (Exception e) {
+                error = e.toString();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            InputStream stream = new ByteArrayInputStream(Base64.decode(fetchedImage.getBytes(), Base64.DEFAULT));
+            Bitmap chatImageBitmap = BitmapFactory.decodeStream(stream);
+            chatImage.setImageBitmap(chatImageBitmap);
+            super.onPostExecute(unused);
         }
     }
 }

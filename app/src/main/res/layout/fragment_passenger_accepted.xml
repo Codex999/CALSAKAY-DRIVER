@@ -50,6 +50,17 @@
             app:fab_label="Message"
             />
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fbPassengerAcceptedMenuItem3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_map"
+            app:fab_colorNormal="@color/oca"
+            app:fab_colorPressed="@color/orange"
+            app:fab_size="mini"
+            app:fab_label="Map Directions"
+            />
+
 
     </com.github.clans.fab.FloatingActionMenu>
 

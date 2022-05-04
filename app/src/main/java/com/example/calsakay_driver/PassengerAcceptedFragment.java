@@ -47,7 +47,7 @@ public class PassengerAcceptedFragment extends Fragment {
     };
     private ImageView ivPassengerImage;
     private FloatingActionMenu fmPassengerAcceptedMenu;
-    private FloatingActionButton fbPassengerAcceptedMenuItem1, fbPassengerAcceptedMenuItem2;
+    private FloatingActionButton fbPassengerAcceptedMenuItem1, fbPassengerAcceptedMenuItem2, fbPassengerAcceptedMenuItem3;
     private TextView tvRideStatus, tvPassengerName, tvPassengerMobileNumber, tvPassengerJob, tvPassengerAge, tvPassengerEmail;
     private Button btPassengerDroppedoff;
     private Context currentContext;
@@ -64,6 +64,7 @@ public class PassengerAcceptedFragment extends Fragment {
         this.fmPassengerAcceptedMenu = view.findViewById(R.id.fmPassengerAcceptedMenu);
         this.fbPassengerAcceptedMenuItem1 = view.findViewById(R.id.fbPassengerAcceptedMenuItem1);
         this.fbPassengerAcceptedMenuItem2 = view.findViewById(R.id.fbPassengerAcceptedMenuItem2);
+        this.fbPassengerAcceptedMenuItem3 = view.findViewById(R.id.fbPassengerAcceptedMenuItem3);
         this.tvRideStatus = view.findViewById(R.id.tvRideStatus);
         this.tvPassengerName = view.findViewById(R.id.tvPassengerName);
         this.tvPassengerMobileNumber = view.findViewById(R.id.tvPassengerMobileNumber);
@@ -88,6 +89,16 @@ public class PassengerAcceptedFragment extends Fragment {
                 "WHERE (`reciever` = " + this.userId + " AND `sender` = " + this.passenger.getPassengerId() + ") " +
                 "OR (`reciever` = " + this.passenger.getPassengerId() + " AND `sender` = " + userId + ") " +
                 "ORDER BY message_id DESC LIMIT 1");
+
+        this.fbPassengerAcceptedMenuItem3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mapDirection = new Intent(currentContext, Directions.class);
+                mapDirection.putExtra("rideOrigin", rideTraceInfo.get(6));
+                mapDirection.putExtra("rideDestination", rideTraceInfo.get(7));
+                startActivity(mapDirection);
+            }
+        });
     }
 
     @Override

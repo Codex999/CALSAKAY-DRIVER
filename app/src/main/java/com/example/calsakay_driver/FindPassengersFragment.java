@@ -54,8 +54,6 @@ public class FindPassengersFragment extends Fragment{
         this.userId = Integer.parseInt(currentActivity.getUserData().get(0)[0]);
         this.lvPassengerContainerList = view.findViewById(R.id.lvFindPassengerContainer);
         passengerList = new ArrayList<>();
-
-
     }
 
     @Override

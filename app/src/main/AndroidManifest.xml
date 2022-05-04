@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.calsakay_driver">
     <!-- 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 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -21,6 +23,9 @@
             android:exported="false" />
         <activity
             android:name="com.example.calsakay_driver.Signup"
+            android:exported="false" />
+        <activity
+            android:name="com.example.calsakay_driver.Directions"
             android:exported="false" />
         <activity
             android:name="com.example.calsakay_driver.Conversation"
